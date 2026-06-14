@@ -1,51 +1,51 @@
 #include <stdio.h>
-#include "tabela_hash.h"
+#include "lista_linear.h"
 
-void executar_testes_hash() {
-    printf("=== INICIANDO TESTES DA TABELA HASH ===\n\n");
+void executar_testes() {
+    printf("--- Iniciando testes da Lista Linear ---\n\n");
 
-    int tamanho_tabela = 5;
-    TabelaHash minha_tabela = hash_criar(tamanho_tabela);
-    if (minha_tabela == NULL) {
-        printf("Falha ao alocar a Tabela Hash.\n");
+    Lista minha_lista = lista_criar();
+    if (minha_lista == NULL) {
+        printf("Erro ao criar a lista.\n");
         return;
     }
-    printf("Tabela Hash criada com %d indices.\n", tamanho_tabela);
-    printf("A tabela esta vazia? %s\n\n", hash_esta_vazia(minha_tabela) ? "Sim" : "Nao");
-    printf("Inserindo valores: 5, 6, 11, 10, 14, 23...\n");
-    hash_inserir(minha_tabela, 5);
-    hash_inserir(minha_tabela, 6);
-    hash_inserir(minha_tabela, 11);
-    hash_inserir(minha_tabela, 10);
-    hash_inserir(minha_tabela, 14);
-    hash_inserir(minha_tabela, 23);
-    hash_exibir(minha_tabela);
-    printf("A tabela esta vazia? %s\n\n", hash_esta_vazia(minha_tabela) ? "Sim" : "Nao");
+    
+    printf("Lista criada com sucesso.\n");
+    lista_exibir(minha_lista);
+    printf("A lista esta vazia? %s\n\n", lista_esta_vazia(minha_lista) ? "Sim" : "Nao");
 
-    int busca_existente = 11;
-    int busca_inexistente = 99;
+    printf("Inserindo valores: 10, 20, 30, 40...\n");
+    lista_inserir(minha_lista, 10);
+    lista_inserir(minha_lista, 20);
+    lista_inserir(minha_lista, 30);
+    lista_inserir(minha_lista, 40);
+    lista_exibir(minha_lista);
+    printf("\n");
 
-    printf("Buscando o valor %d: %s\n", busca_existente, hash_buscar(minha_tabela, busca_existente) ? "Encontrado" : "Nao encontrado");
-    printf("Buscando o valor %d: %s\n\n", busca_inexistente, hash_buscar(minha_tabela, busca_inexistente) ? "Encontrado" : "Nao encontrado");
-    printf("Removendo o valor 11 (meio da lista do Indice 1)...\n");
+    int valor_busca_1 = 30;
+    int valor_busca_2 = 50;
+    
+    printf("Buscando valor %d: %s\n", valor_busca_1, lista_buscar(minha_lista, valor_busca_1) ? "Encontrado" : "Nao encontrado");
+    printf("Buscando valor %d: %s\n\n", valor_busca_2, lista_buscar(minha_lista, valor_busca_2) ? "Encontrado" : "Nao encontrado");
+    printf("Removendo o valor 20...\n");
+    lista_remover(minha_lista, 20);
+    lista_exibir(minha_lista);
+    
+    printf("Removendo o valor 10 (primeiro)...\n");
+    lista_remover(minha_lista, 10);
+    lista_exibir(minha_lista);
 
-    hash_remover(minha_tabela, 11);
-    hash_exibir(minha_tabela);
-    hash_remover(minha_tabela, 10);
-    hash_exibir(minha_tabela);
-
-    printf("Tentando remover um valor nao existente (99)...\n");
-    if (!hash_remover(minha_tabela, 99)) {
-        printf("Remocao falhou: valor 99 nao consta na tabela.\n\n");
-    }
-
-    printf("Destruindo a tabela hash...\n");
-    hash_destruir(minha_tabela);
-    printf("=== FIM DOS TESTES ===\n");
+    printf("Removendo o valor 40 (ultimo)...\n");
+    lista_remover(minha_lista, 40);
+    lista_exibir(minha_lista);
+    printf("\n");
+    printf("Destruindo a lista...\n");
+    lista_destruir(minha_lista);
+    printf("--- Testes finalizados ---\n");
 }
 
 int main() {
-    executar_testes_hash();
+    executar_testes();
     
     return 0;
 }
