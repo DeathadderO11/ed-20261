@@ -53,6 +53,6 @@ int main() {
     printf("Tempo do Bubble Sort:    %f segundos\n", tempo_bubble);
     printf("Tempo do Selection Sort: %f segundos\n", tempo_selection);
     printf("Tempo do Quick Sort:     %f segundos\n", tempo_quick);
-    
+
     return 0;
 }

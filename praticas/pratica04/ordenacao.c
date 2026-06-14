@@ -22,7 +22,7 @@ void selection_sort(int vetor[], int tamanho) {
                 min_idx = j;
             }
         }
-    
+
         if (min_idx != i) {
             aux = vetor[i];
             vetor[i] = vetor[min_idx];
@@ -55,6 +55,6 @@ void quick_sort(int vetor[], int inicio, int fim) {
     if (inicio < fim) {
         int pi = particiona(vetor, inicio, fim);
         quick_sort(vetor, inicio, pi - 1);
-        quick_sort(vetor, pi + 1, fim);
+        quick_sort(vetor, pi + 1, fim);   
     }
 }
